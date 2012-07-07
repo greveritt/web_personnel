@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
 <title>output</title>
 </head>
 
@@ -28,6 +28,9 @@ if ($our_db->connect_errno) {
     printf("Connection failed: %s\n", $our_db->connect_errno);
     exit();
 }
+
+// check that DB and table exist, creates if they don't
+ensureInit($our_db);
 
 // prepares check to see if item of given ID even exists
 $IDRecord = $our_db->prepare("SELECT * FROM employees WHERE id = $id;");

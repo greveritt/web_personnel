@@ -1,4 +1,3 @@
--- We are using the database name "OPUS", because why not?
 CREATE DATABASE IF NOT EXISTS OPUS;
 USE OPUS;
 CREATE TABLE employees (id INT(30), 

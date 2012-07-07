@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
 <title>output</title>
 </head>
 
@@ -20,14 +20,17 @@ $lname = $_POST['lname'];
 $phone = $_POST['phone'];
 $location = $_POST['location'];
 
-// connect to MySQL server database 'daedalus'
+// connect to MySQL server database
 $our_db = connect();
 
-/*check connection for errors */
+// check connection for errors 
 if ($our_db->connect_errno) {
     printf("Connection failed: %s\n", $our_db->connect_errno);
     exit();
 }
+
+// check that DB and table exist, creates if they don't
+ensureInit($our_db);
 
 // add form input as new row in DB
 if (!$our_db->query("INSERT INTO employees 
