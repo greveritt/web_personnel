@@ -1,4 +1,4 @@
 web_personnel
 =============
 
-A syste
+A system for maintaining an employee database from a web browser.
