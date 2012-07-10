@@ -38,7 +38,18 @@ else if ($IDRecord->close() && !$our_db->query("DELETE FROM employees WHERE id=$
     printf("<br>Error: %s. Request could not be completed.", $our_db->error);
 }
 else {
-    echo 'Your request was completed successfully.';
+    echo "Your request was completed successfully. The following employee was deleted:";
+	echo '<br>';
+	printf("ID: %s", $idTest);
+    echo '<br>';
+	printf("First name: %s", $fnameTest);
+    echo '<br>';
+	printf("Last name: %s", $lnameTest);
+    echo '<br>';
+	printf("Phone #: %s", $phoneTest);
+    echo '<br>';
+	printf("Location: %s", $locationTest);
+    echo '<br>';
 }
 $our_db->close();
 ?>
