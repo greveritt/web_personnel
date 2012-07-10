@@ -20,17 +20,8 @@ $lname = $_POST['lname'];
 $phone = $_POST['phone'];
 $location = $_POST['location'];
 
-// connect to MySQL server database
-$our_db = connect();
-
-// check connection for errors 
-if ($our_db->connect_errno) {
-    printf("Connection failed: %s\n", $our_db->connect_errno);
-    exit();
-}
-
-// check that DB and table exist, creates if they don't
-ensureInit($our_db);
+// connect to MySQL database
+$our_db = getDBAccess();
 
 // add form input as new row in DB
 if (!$our_db->query("INSERT INTO employees 

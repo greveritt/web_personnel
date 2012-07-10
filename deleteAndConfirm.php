@@ -20,17 +20,8 @@ $lname = $_POST['lname'];
 $phone = $_POST['phone'];
 $location = $_POST['location'];
 
-// connect to MySQL server and select database 'daedalus'
-$our_db = connect();
-
-/* check connection for errors */
-if ($our_db->connect_errno) {
-    printf("Connection failed: %s\n", $our_db->connect_errno);
-    exit();
-}
-
-// check that DB and table exist, creates if they don't
-ensureInit($our_db);
+// connect to MySQL database
+$our_db = getDBAccess();
 
 // prepares check to see if item of given ID even exists
 $IDRecord = $our_db->prepare("SELECT * FROM employees WHERE id = $id;");
