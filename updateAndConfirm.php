@@ -44,6 +44,17 @@ else if ($IDRecord->close() && !$our_db->query("UPDATE employees SET
 }
 else {
     echo 'Your request was completed successfully.';
+	echo '<br>';
+	printf("ID: %s", $id);
+    echo '<br>';
+	printf("First name: %s", $fname);
+    echo '<br>';
+	printf("Last name: %s", $lname);
+    echo '<br>';
+	printf("Phone #: %s", $phone);
+    echo '<br>';
+	printf("Location: %s", $location);
+    echo '<br>';
 } 
 
 $our_db->close();
