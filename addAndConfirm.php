@@ -10,7 +10,7 @@
 
 <p>
 <?php
-include 'dbFunctions.php';
+require 'dbFunctions.php';
 
 // retrieve form data
 
