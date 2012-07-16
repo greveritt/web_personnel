@@ -1,7 +1,7 @@
 <?php
  
 function connect() {
-    $db = new mysqli('localhost', 'USER', 'PASSWORD', 'OPUS');
+    $db = new mysqli('localhost', 'USER', 'PASSWORD', 'DB_NAME');
     return $db;
 }
 
