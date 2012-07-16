@@ -10,6 +10,8 @@
 
 <p>
 <?php
+ini_set('display_errors',1); 
+ error_reporting(E_ALL);
 require 'dbFunctions.php';
 
 // retrieve form data
@@ -20,42 +22,44 @@ $lname = $_POST['lname'];
 $phone = $_POST['phone'];
 $location = $_POST['location'];
 
+
 // connect to MySQL database
 $our_db = getDBAccess();
 
 // prepares check to see if item of given ID even exists
-$IDRecord = $our_db->prepare("SELECT * FROM employees WHERE id = $id;");
+$testQuery = "SELECT * FROM employees WHERE id = ?";
+$IDRecord = $our_db->prepare($testQuery);
+$IDRecord->bind_param('d', $_POST['id']);
 $IDRecord->execute();
 $IDRecord->bind_result($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
 $IDRecord->fetch();
+$IDRecord->close();
+unset($IDRecord);
 
 // if record exists, add form input as updated row in DB, then closes DB
-if ($idTest==0) {
-    echo 'Sorry, that record does not exist.';
-    $IDRecord->close();
+$updateQuery = $our_db->prepare("UPDATE employees SET first_name=?, last_name=?, phone_number=?, location=? WHERE id=?;");
+if (!isset($idTest)) {
+    break;
 }
-else if ($IDRecord->close() && !$our_db->query("UPDATE employees SET 
-    first_name='$fname', 
-    last_name='$lname', 
-    phone_number=$phone, 
-    location='$location' 
-    WHERE id=$id;")) {
+else if ((!$updateQuery->bind_param('ssssi', $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location'], $_POST['id']) || !$updateQuery->execute())) {
     printf("<br>Error: %s. Request could not be completed.", $our_db->error);
 }
 else {
     echo 'Your request was completed successfully.';
 	echo '<br>';
-	printf("ID: %s", $id);
+	printf("ID: %s", $our_db->real_escape_string($_POST['id']));
     echo '<br>';
-	printf("First name: %s", $fname);
+	printf("First name: %s", $our_db->real_escape_string($_POST['fname']));
     echo '<br>';
-	printf("Last name: %s", $lname);
+	printf("Last name: %s", $our_db->real_escape_string($_POST['lname']));
     echo '<br>';
-	printf("Phone #: %s", $phone);
+	printf("Phone #: %s", $our_db->real_escape_string($_POST['phone']));
     echo '<br>';
-	printf("Location: %s", $location);
+	printf("Location: %s", $our_db->real_escape_string($_POST['location']));
     echo '<br>';
 } 
+$updateQuery->close();
+unset($updateQuery);
 
 $our_db->close();
 ?>

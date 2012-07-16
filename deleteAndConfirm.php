@@ -12,6 +12,7 @@
 <?php
 require 'dbFunctions.php';
 
+/*
 // retrieve form data
 
 $id = $_POST['id'];
@@ -19,12 +20,14 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $phone = $_POST['phone'];
 $location = $_POST['location'];
+*/
 
 // connect to MySQL database
 $our_db = getDBAccess();
 
 // prepares check to see if item of given ID even exists
-$IDRecord = $our_db->prepare("SELECT * FROM employees WHERE id = $id;");
+$query = sprintf("SELECT * FROM employees WHERE id = %s;", $our_db->real_escape_string($_POST['id']));
+$IDRecord = $our_db->prepare($query);
 $IDRecord->execute();
 $IDRecord->bind_result($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
 $IDRecord->fetch();
@@ -34,7 +37,7 @@ if ($idTest==0) {
     echo 'Sorry, that record does not exist.';
     $IDRecord->close();
 }
-else if ($IDRecord->close() && !$our_db->query("DELETE FROM employees WHERE id=$id")) {
+else if ($IDRecord->close() && !$our_db->query(sprintf("DELETE FROM employees WHERE id=%s", $our_db->real_escape_string($_POST['id'])))) {
     printf("<br>Error: %s. Request could not be completed.", $our_db->error);
 }
 else {

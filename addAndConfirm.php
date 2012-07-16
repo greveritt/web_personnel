@@ -12,6 +12,7 @@
 <?php
 require 'dbFunctions.php';
 
+/*
 // retrieve form data
 
 $id = $_POST['id'];
@@ -19,27 +20,33 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $phone = $_POST['phone'];
 $location = $_POST['location'];
+*/
 
 // connect to MySQL database
 $our_db = getDBAccess();
 
 // add form input as new row in DB
-if (!$our_db->query("INSERT INTO employees 
-    VALUES($id, '$fname', '$lname', $phone, '$location');")) {
+$query = sprintf("INSERT INTO employees VALUES(%s, '%s', '%s', '%s', '%s');",
+	$our_db->real_escape_string($_POST['id']),
+	$our_db->real_escape_string($_POST['fname']),
+	$our_db->real_escape_string($_POST['lname']),
+	$our_db->real_escape_string($_POST['phone']),
+	$our_db->real_escape_string($_POST['location']));
+if (!$our_db->query($query)) {
     printf("<br>Error: %s. Request could not be completed.", $our_db->error);
 }
 else {
     echo 'Your request was completed successfully.';
 	echo '<br>';
-	printf("ID: %s", $id);
+	printf("ID: %s", $_POST['id']);
     echo '<br>';
-	printf("First name: %s", $fname);
+	printf("First name: %s", $_POST['fname']);
     echo '<br>';
-	printf("Last name: %s", $lname);
+	printf("Last name: %s", $_POST['lname']);
     echo '<br>';
-	printf("Phone #: %s", $phone);
+	printf("Phone #: %s", $_POST['phone']);
     echo '<br>';
-	printf("Location: %s", $location);
+	printf("Location: %s", $_POST['location']);
     echo '<br>';
 }
 $our_db->close();
