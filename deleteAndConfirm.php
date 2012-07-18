@@ -12,22 +12,13 @@
 <?php
 require 'dbFunctions.php';
 
-/*
-// retrieve form data
-
-$id = $_POST['id'];
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
-$phone = $_POST['phone'];
-$location = $_POST['location'];
-*/
-
 // connect to MySQL database
 $our_db = getDBAccess();
 
 // prepares check to see if item of given ID even exists
-$query = sprintf("SELECT * FROM employees WHERE id = %s;", $our_db->real_escape_string($_POST['id']));
+$query = "SELECT * FROM employees WHERE id = ?;";
 $IDRecord = $our_db->prepare($query);
+$IDRecord->bind_param('i', $_POST['id']);
 $IDRecord->execute();
 $IDRecord->bind_result($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
 $IDRecord->fetch();
@@ -54,6 +45,7 @@ else {
 	printf("Location: %s", $locationTest);
     echo '<br>';
 }
+unset($IDRecord);
 $our_db->close();
 ?>
 </p>

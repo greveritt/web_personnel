@@ -12,27 +12,14 @@
 <?php
 require 'dbFunctions.php';
 
-/*
-// retrieve form data
-
-$id = $_POST['id'];
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
-$phone = $_POST['phone'];
-$location = $_POST['location'];
-*/
-
 // connect to MySQL database
 $our_db = getDBAccess();
 
 // add form input as new row in DB
-$query = sprintf("INSERT INTO employees VALUES(%s, '%s', '%s', '%s', '%s');",
-	$our_db->real_escape_string($_POST['id']),
-	$our_db->real_escape_string($_POST['fname']),
-	$our_db->real_escape_string($_POST['lname']),
-	$our_db->real_escape_string($_POST['phone']),
-	$our_db->real_escape_string($_POST['location']));
-if (!$our_db->query($query)) {
+$queryString = "INSERT INTO employees VALUES(?, ?, ?, ?, ?);";
+$query = $our_db->prepare($queryString);
+$query->bind_param('issss', $_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
+if (!$query->execute()) {
     printf("<br>Error: %s. Request could not be completed.", $our_db->error);
 }
 else {
