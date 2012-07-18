@@ -16,36 +16,33 @@ require 'dbFunctions.php';
 $our_db = getDBAccess();
 
 // prepares check to see if item of given ID even exists
-$query = "SELECT * FROM employees WHERE id = ?;";
-$IDRecord = $our_db->prepare($query);
+$testQuery = 'SELECT * FROM employees WHERE id = ?;';
+$IDRecord = $our_db->prepare($testQuery);
 $IDRecord->bind_param('i', $_POST['id']);
 $IDRecord->execute();
 $IDRecord->bind_result($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
 $IDRecord->fetch();
+$IDRecord->close();
+unset($recordDeleter);
+
+// prepare delete query
+$deleteQuery = 'DELETE FROM employees WHERE id = ?';
+$recordDeleter = $our_db->prepare($deleteQuery);
+$recordDeleter->bind_param('i', $_POST['id']);
 
 // if record exists, deletes row with specified ID, then closes DB connection
 if ($idTest==0) {
     echo 'Sorry, that record does not exist.';
-    $IDRecord->close();
 }
-else if ($IDRecord->close() && !$our_db->query(sprintf("DELETE FROM employees WHERE id=%s", $our_db->real_escape_string($_POST['id'])))) {
+else if (!$recordDeleter->execute()) {
     printf("<br>Error: %s. Request could not be completed.", $our_db->error);
 }
 else {
     echo "Your request was completed successfully. The following employee was deleted:";
-	echo '<br>';
-	printf("ID: %s", $idTest);
-    echo '<br>';
-	printf("First name: %s", $fnameTest);
-    echo '<br>';
-	printf("Last name: %s", $lnameTest);
-    echo '<br>';
-	printf("Phone #: %s", $phoneTest);
-    echo '<br>';
-	printf("Location: %s", $locationTest);
-    echo '<br>';
+	displayRowContents($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
 }
-unset($IDRecord);
+$recordDeleter->close();
+unset($recordDeleter);
 $our_db->close();
 ?>
 </p>

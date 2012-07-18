@@ -16,7 +16,7 @@ require 'dbFunctions.php';
 $our_db = getDBAccess();
 
 // prepares check to see if item of given ID even exists
-$testQuery = "SELECT * FROM employees WHERE id = ?";
+$testQuery = 'SELECT * FROM employees WHERE id = ?';
 $IDRecord = $our_db->prepare($testQuery);
 $IDRecord->bind_param('d', $_POST['id']);
 $IDRecord->execute();
@@ -26,7 +26,7 @@ $IDRecord->close();
 unset($IDRecord);
 
 // if record exists, add form input as updated row in DB, then closes DB
-$updateQuery = $our_db->prepare("UPDATE employees SET first_name=?, last_name=?, phone_number=?, location=? WHERE id=?;");
+$updateQuery = $our_db->prepare('UPDATE employees SET first_name=?, last_name=?, phone_number=?, location=? WHERE id=?;');
 if ($idTest==0) {
     echo 'Sorry, that record does not exist.';
 }
@@ -35,17 +35,7 @@ else if ((!$updateQuery->bind_param('ssssi', $_POST['fname'], $_POST['lname'], $
 }
 else {
     echo 'Your request was completed successfully.';
-	echo '<br>';
-	printf("ID: %s", $our_db->real_escape_string($_POST['id']));
-    echo '<br>';
-	printf("First name: %s", $our_db->real_escape_string($_POST['fname']));
-    echo '<br>';
-	printf("Last name: %s", $our_db->real_escape_string($_POST['lname']));
-    echo '<br>';
-	printf("Phone #: %s", $our_db->real_escape_string($_POST['phone']));
-    echo '<br>';
-	printf("Location: %s", $our_db->real_escape_string($_POST['location']));
-    echo '<br>';
+	displayRowContents($_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
 } 
 $updateQuery->close();
 unset($updateQuery);

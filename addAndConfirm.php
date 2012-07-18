@@ -16,7 +16,7 @@ require 'dbFunctions.php';
 $our_db = getDBAccess();
 
 // add form input as new row in DB
-$queryString = "INSERT INTO employees VALUES(?, ?, ?, ?, ?);";
+$queryString = 'INSERT INTO employees VALUES(?, ?, ?, ?, ?);';
 $query = $our_db->prepare($queryString);
 $query->bind_param('issss', $_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
 if (!$query->execute()) {
@@ -24,17 +24,7 @@ if (!$query->execute()) {
 }
 else {
     echo 'Your request was completed successfully.';
-	echo '<br>';
-	printf("ID: %s", $_POST['id']);
-    echo '<br>';
-	printf("First name: %s", $_POST['fname']);
-    echo '<br>';
-	printf("Last name: %s", $_POST['lname']);
-    echo '<br>';
-	printf("Phone #: %s", $_POST['phone']);
-    echo '<br>';
-	printf("Location: %s", $_POST['location']);
-    echo '<br>';
+	displayRowContents($_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
 }
 $our_db->close();
 ?>

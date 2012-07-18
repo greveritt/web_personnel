@@ -29,4 +29,26 @@ function getDBAccess() {
 	return $db;
 }
 
+function displayRowContents($id, $fname, $lname, $phone, $location) {
+	echo '<br>';
+	printf("ID: %s", $id);
+    echo '<br>';
+	printf("First name: %s", $fname);
+    echo '<br>';
+	printf("Last name: %s", $lname);
+    echo '<br>';
+	printf("Phone #: %s", $phone);
+    echo '<br>';
+	printf("Location: %s", $location);
+    echo '<br>';
+}
+
+/*
+// displays an employee record
+function displayRow($row) {
+	foreach($row as $field) {
+		echo $field;
+		echo $row;
+	} 
+} */
 ?>
