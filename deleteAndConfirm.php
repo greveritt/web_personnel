@@ -3,13 +3,14 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="content-type">
+<link rel="stylesheet" href="table.css" type="text/css">
 <title>output</title>
 </head>
 
 <body>
 
-<p>
 <?php
+include 'header.php';
 require 'dbFunctions.php';
 
 // connect to MySQL database
@@ -32,13 +33,13 @@ $recordDeleter->bind_param('i', $_POST['id']);
 
 // if record exists, deletes row with specified ID, then closes DB connection
 if ($idTest==0) {
-    echo 'Sorry, that record does not exist.';
+    echo '<p>Sorry, that record does not exist.</p>';
 }
 else if (!$recordDeleter->execute()) {
-    printf("<br>Error: %s. Request could not be completed.", $our_db->error);
+    printf("<p>Error: %s. Request could not be completed.</p>", $our_db->error);
 }
 else {
-    echo "Your request was completed successfully. The following employee was deleted:";
+    echo "<p>Your request was completed successfully. The following employee was deleted:</p>";
 	echo '<table>';
 	echo '<caption>Deleted row</caption>';
 	echoTableHeader();
@@ -48,14 +49,10 @@ else {
 $recordDeleter->close();
 unset($recordDeleter);
 $our_db->close();
-?>
-</p>
 
-<p>
-	<a href="index.html">Back</a> <br>
-    <a href="http://validator.w3.org/check?uri=referer"><img
-      src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a>
-</p>
+include 'goBack.php';
+include 'footer.php';
+?>
 
 </body>
 
