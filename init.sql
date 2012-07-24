@@ -1,3 +1,4 @@
+-- For this example, we name the database "OPUS"
 CREATE DATABASE IF NOT EXISTS OPUS;
 USE OPUS;
 CREATE TABLE employees (id INT(30), 

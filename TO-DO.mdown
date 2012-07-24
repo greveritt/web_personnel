@@ -1,2 +1,2 @@
-* add viewTables function
-* modularize certain functions so that displaying the contents of a row can be down with a function call
+* modularize certain functions so that each page has only a couple lines of code?
+* add comments for increased readability

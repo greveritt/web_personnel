@@ -35,7 +35,11 @@ else if ((!$updateQuery->bind_param('ssssi', $_POST['fname'], $_POST['lname'], $
 }
 else {
     echo 'Your request was completed successfully.';
-	displayRowContents($_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
+	echo '<table>';
+	echo '<caption>Updated row</caption>';
+	echoTableHeader();
+	displayRow($_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
+	echo '</table>';
 } 
 $updateQuery->close();
 unset($updateQuery);

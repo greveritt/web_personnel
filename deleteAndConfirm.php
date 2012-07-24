@@ -39,7 +39,11 @@ else if (!$recordDeleter->execute()) {
 }
 else {
     echo "Your request was completed successfully. The following employee was deleted:";
-	displayRowContents($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
+	echo '<table>';
+	echo '<caption>Deleted row</caption>';
+	echoTableHeader();
+	displayRow($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
+	echo '</table>';
 }
 $recordDeleter->close();
 unset($recordDeleter);

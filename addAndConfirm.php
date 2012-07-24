@@ -24,7 +24,11 @@ if (!$query->execute()) {
 }
 else {
     echo 'Your request was completed successfully.';
-	displayRowContents($_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
+	echo '<table>';
+	echo '<caption>Added row</caption>';
+	echoTableHeader();
+	displayRow($_POST['id'], $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location']);
+	echo '</table>';
 }
 $our_db->close();
 ?>

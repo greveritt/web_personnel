@@ -1,5 +1,5 @@
 <?php
- 
+
 function connect() {
     $db = new mysqli('localhost', 'USER', 'PASSWORD', 'DB_NAME');
     return $db;
@@ -29,6 +29,12 @@ function getDBAccess() {
 	return $db;
 }
 
+function echoTableHeader() {
+	echo '<tr>';
+	echo '	<th>ID</th> <th>First name</th> <th>Last name</th> <th>Phone</th> <th>Location</th>';
+	echo '</tr>';
+}
+
 function displayRowContents($id, $fname, $lname, $phone, $location) {
 	echo '<br>';
 	printf("ID: %s", $id);
@@ -43,12 +49,31 @@ function displayRowContents($id, $fname, $lname, $phone, $location) {
     echo '<br>';
 }
 
-/*
 // displays an employee record
-function displayRow($row) {
-	foreach($row as $field) {
-		echo $field;
-		echo $row;
-	} 
-} */
+function displayRow($id, $fname, $lname, $phone, $location) {
+	$cellTemplate = "<td>%s</td> ";
+	echo '<tr>';
+	printf($cellTemplate, $id);
+	printf($cellTemplate, $fname);
+	printf($cellTemplate, $lname);
+	printf($cellTemplate, $phone);
+	printf($cellTemplate, $location);
+	echo '</tr>';
+} 
+
+// display employees table
+function displayTable() {
+	$db = connect();
+	$selectQueryText = "SELECT * FROM employees;";
+	$selectQuery = $db->prepare($selectQueryText);
+	$selectQuery->execute();
+	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
+	echo '<table>';
+	echo '<caption>Results</caption>';
+	echoTableHeader();
+	while($selectQuery->fetch()) {
+		displayRow($id, $fname, $lname, $phone, $location);
+	}
+	echo '</table>';
+}
 ?>
