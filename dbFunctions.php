@@ -30,11 +30,15 @@ function getDBAccess() {
 }
 
 function echoTableHeader() {
+	echo '<thead>';
 	echo '<tr>';
 	echo '	<th>ID</th> <th>First name</th> <th>Last name</th> <th>Phone</th> <th>Location</th>';
 	echo '</tr>';
+	echo '</thead>';
 }
 
+// The following function is deprecated
+/*
 function displayRowContents($id, $fname, $lname, $phone, $location) {
 	echo '<br>';
 	printf("ID: %s", $id);
@@ -48,6 +52,7 @@ function displayRowContents($id, $fname, $lname, $phone, $location) {
 	printf("Location: %s", $location);
     echo '<br>';
 }
+*/
 
 // displays an employee record
 function displayRow($id, $fname, $lname, $phone, $location) {
@@ -71,9 +76,11 @@ function displayTable() {
 	echo '<table>';
 	echo '<caption>Results</caption>';
 	echoTableHeader();
+	echo '<tbody>';
 	while($selectQuery->fetch()) {
 		displayRow($id, $fname, $lname, $phone, $location);
 	}
+	echo '</tbody>';
 	echo '</table>';
 }
 ?>

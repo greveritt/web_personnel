@@ -3,13 +3,14 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="content-type">
+<link rel="stylesheet" href="table.css" type="text/css">
 <title>output</title>
 </head>
 
 <body>
 
-<p>
 <?php
+include 'header.php';
 require 'dbFunctions.php';
 
 // connect to MySQL database
@@ -28,13 +29,13 @@ unset($IDRecord);
 // if record exists, add form input as updated row in DB, then closes DB
 $updateQuery = $our_db->prepare('UPDATE employees SET first_name=?, last_name=?, phone_number=?, location=? WHERE id=?;');
 if ($idTest==0) {
-    echo 'Sorry, that record does not exist.';
+    echo '<p>Sorry, that record does not exist.</p>';
 }
 else if ((!$updateQuery->bind_param('ssssi', $_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['location'], $_POST['id']) || !$updateQuery->execute())) {
-    printf("<br>Error: %s. Request could not be completed.", $our_db->error);
+    printf("<p>Error: %s. Request could not be completed.</p>", $our_db->error);
 }
 else {
-    echo 'Your request was completed successfully.';
+    echo '<p>Your request was completed successfully.</p>';
 	echo '<table>';
 	echo '<caption>Updated row</caption>';
 	echoTableHeader();
@@ -45,14 +46,10 @@ $updateQuery->close();
 unset($updateQuery);
 
 $our_db->close();
-?>
-</p>
 
-<p>
-	<a href="index.html">Back</a> <br>
-    <a href="http://validator.w3.org/check?uri=referer"><img
-      src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a>
-</p>
+include 'goBack.php';
+include 'footer.php';
+?>
 
 </body>
 
