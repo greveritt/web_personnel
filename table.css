@@ -1,5 +1,5 @@
-body { background-color: rgb( 224, 238, 238 ); }
-h1 { text-align: center; }
+body { background-color: rgb( 224, 238, 238 ); font-family: sans-serif; }
+h1 { text-align: center; font-family: serif; }
 table { background-color: rgb( 240, 255, 255 );
 		border: outset 8pt; }
 caption	{ font-style: italic; }

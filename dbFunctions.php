@@ -1,7 +1,7 @@
 <?php
 
 function connect() {
-    $db = new mysqli('localhost', 'USER', 'PASSWORD', 'DB_NAME');
+	$db = new mysqli('localhost', 'USER', 'PASSWORD', 'DB_NAME');
     return $db;
 }
 
@@ -56,7 +56,8 @@ function displayRowContents($id, $fname, $lname, $phone, $location) {
 
 // displays an employee record
 function displayRow($id, $fname, $lname, $phone, $location) {
-	$cellTemplate = "<td>%s</td> ";
+	//$idCellTemplate = '<td>%s</td> ';
+	$cellTemplate = '<td>%s</td> ';
 	echo '<tr>';
 	printf($cellTemplate, $id);
 	printf($cellTemplate, $fname);
@@ -73,6 +74,7 @@ function displayTable() {
 	$selectQuery = $db->prepare($selectQueryText);
 	$selectQuery->execute();
 	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
+	//echo '<form>';
 	echo '<table>';
 	echo '<caption>Results</caption>';
 	echoTableHeader();
@@ -82,5 +84,6 @@ function displayTable() {
 	}
 	echo '</tbody>';
 	echo '</table>';
+	//echo '</form>';
 }
 ?>

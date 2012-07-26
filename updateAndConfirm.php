@@ -17,17 +17,18 @@ require 'dbFunctions.php';
 $our_db = getDBAccess();
 
 // prepares check to see if item of given ID even exists
-$testQuery = 'SELECT * FROM employees WHERE id = ?';
-$IDRecord = $our_db->prepare($testQuery);
-$IDRecord->bind_param('d', $_POST['id']);
-$IDRecord->execute();
-$IDRecord->bind_result($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
-$IDRecord->fetch();
-$IDRecord->close();
-unset($IDRecord);
+$testQueryString = 'SELECT * FROM employees WHERE id = ?';
+$testQuery = $our_db->prepare($testQueryString);
+$testQuery->bind_param('d', $_POST['id']);
+$testQuery->execute();
+$testQuery->bind_result($idTest, $fnameTest, $lnameTest, $phoneTest, $locationTest);
+$testQuery->fetch();
+$testQuery->close();
+unset($testQuery);
 
 // if record exists, add form input as updated row in DB, then closes DB
-$updateQuery = $our_db->prepare('UPDATE employees SET first_name=?, last_name=?, phone_number=?, location=? WHERE id=?;');
+$updateQueryString = 'UPDATE employees SET first_name=?, last_name=?, phone_number=?, location=? WHERE id=?;';
+$updateQuery = $our_db->prepare($updateQueryString);
 if ($idTest==0) {
     echo '<p>Sorry, that record does not exist.</p>';
 }

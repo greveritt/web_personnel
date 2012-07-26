@@ -9,5 +9,5 @@
 </p>
 <hr>
 <p>
-<em>web_personnel Copyright &copy; Gregory Everitt 2012</em>
+<span style="font-family: sarif;">web_personnel Copyright &copy; Gregory Everitt 2012</span>
 </p>
