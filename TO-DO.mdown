@@ -1,2 +1,3 @@
 * modularize certain functions so that each page has only a couple lines of code?
 * add comments for increased readability
+* add functionality that allows the user to access all of the program's functions from the table viewer

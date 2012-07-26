@@ -1,6 +1,8 @@
-web_personnel
+web_personnel v0.5
 =============
 
 A system for maintaining an employee database from a web browser.
+
+To get this system working, you must edit the connect() function so that it contains the connection details for your MySQL server. A proper configuration system is forthcoming.
 
 Requires PHP, MySQL, and a compatible webserver like Apache.
