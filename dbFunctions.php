@@ -56,10 +56,12 @@ function displayRowContents($id, $fname, $lname, $phone, $location) {
 
 // displays an employee record
 function displayRow($id, $fname, $lname, $phone, $location) {
-	//$idCellTemplate = '<td>%s</td> ';
 	$cellTemplate = '<td>%s</td> ';
 	echo '<tr>';
-	printf($cellTemplate, $id);
+	// print a cell containing the ID number along with a radio button that submits the ID number
+	printf($cellTemplate, '<label><input type="radio" name="id" value="'.$id.'">'.$id.'</label>');
+	//printf($cellTemplate, $id);
+	// print cells of the other data from the row
 	printf($cellTemplate, $fname);
 	printf($cellTemplate, $lname);
 	printf($cellTemplate, $phone);
@@ -69,12 +71,12 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 
 // display employees table
 function displayTable() {
-	$db = connect();
+	$db = getDBAccess();
 	$selectQueryText = "SELECT * FROM employees;";
 	$selectQuery = $db->prepare($selectQueryText);
 	$selectQuery->execute();
 	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
-	//echo '<form>';
+	echo '<form action="deleteAndConfirm.php" method="post">';
 	echo '<table>';
 	echo '<caption>Results</caption>';
 	echoTableHeader();
@@ -84,6 +86,7 @@ function displayTable() {
 	}
 	echo '</tbody>';
 	echo '</table>';
-	//echo '</form>';
+	echo '<p><input type="submit" value="Delete"></p>';
+	echo '</form>';
 }
 ?>

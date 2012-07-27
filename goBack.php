@@ -1,3 +1,3 @@
 <p>
-	<a href="index.php">Back</a>
+	<a href="view.php">Back</a>
 </p>
