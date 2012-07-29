@@ -2,7 +2,7 @@
 
 function connect() {
 	$parameters = file('dbInfo.txt');
-	$db = new mysqli($parameters[0], $parameters[1], $parameters[2], $parameters[3]);
+	$db = new mysqli(trim($parameters[0]), trim($parameters[1]), trim($parameters[2]), trim($parameters[3]));
     return $db;
 }
 
