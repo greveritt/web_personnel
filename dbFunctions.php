@@ -65,7 +65,7 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="'.$fname.'">');
 	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="'.$lname.'">');
 	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="'.$phone.'">');
-	printf($cellTemplate, '<input type="text" name="phone" tabindex="40" value="'.$location.'">'); // this will be made a dropdown later
+	printf($cellTemplate, '<input type="text" name="location" tabindex="40" value="'.$location.'">'); // this will be made a dropdown later
 	echo '</tr>';
 } 
 
