@@ -88,8 +88,8 @@ function displayTable() {
 	echo '</tbody>';
 	echo '</table>';
 	echo '<p>';
-	echo '<input type="radio" name="function"> Update ';
-	echo '<input type="radio" name="function"> Delete ';
+	echo '<label><input type="radio" name="function"> Update </label>';
+	echo '<label><input type="radio" name="function"> Delete </label>';
 	echo '</p>';
 	echo '<p><input type="submit" value="Send" onClick="return whichFunction()"></p>';
 	echo '</form>';
