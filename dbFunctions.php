@@ -76,6 +76,10 @@ function displayTable() {
 	$selectQuery = $db->prepare($selectQueryText);
 	$selectQuery->execute();
 	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
+	echo '<script
+   type='text/javascript'
+   src='directory/file.js'>
+</script>';
 	echo '<form name="editTable" action="deleteAndConfirm.php" method="post">';
 	echo '<table>';
 	echo '<caption>Results</caption>';
@@ -87,10 +91,10 @@ function displayTable() {
 	echo '</tbody>';
 	echo '</table>';
 	echo '<p>';
-	echo '<input type="radio" name="update"> Update ';
-	echo '<input type="radio" name="delete"> Delete ';
+	echo '<input type="radio" name="function"> Update ';
+	echo '<input type="radio" name="function"> Delete ';
 	echo '</p>';
-	echo '<p><input type="submit" value="Send"></p>';
+	echo '<p><input type="submit" value="Send" onClick="return radioFunction.js"></p>';
 	echo '</form>';
 }
 ?>
