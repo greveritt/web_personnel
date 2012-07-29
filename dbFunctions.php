@@ -76,10 +76,7 @@ function displayTable() {
 	$selectQuery = $db->prepare($selectQueryText);
 	$selectQuery->execute();
 	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
-	echo '<script
-   type='text/javascript'
-   src='directory/file.js'>
-</script>';
+	echo "<script type='text/javascript' src='directory/file.js'></script>";
 	echo '<form name="editTable" action="deleteAndConfirm.php" method="post">';
 	echo '<table>';
 	echo '<caption>Results</caption>';
