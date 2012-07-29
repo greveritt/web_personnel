@@ -76,7 +76,7 @@ function displayTable() {
 	$selectQuery = $db->prepare($selectQueryText);
 	$selectQuery->execute();
 	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
-	echo '<form action="deleteAndConfirm.php" method="post">';
+	echo '<form name="editTable" action="deleteAndConfirm.php" method="post">';
 	echo '<table>';
 	echo '<caption>Results</caption>';
 	echoTableHeader();
@@ -86,7 +86,11 @@ function displayTable() {
 	}
 	echo '</tbody>';
 	echo '</table>';
-	echo '<p><input type="submit" value="Delete"></p>';
+	echo '<p>';
+	echo '<input type="radio" name="update"> Update ';
+	echo '<input type="radio" name="delete"> Delete ';
+	echo '</p>';
+	echo '<p><input type="submit" value="Send"></p>';
 	echo '</form>';
 }
 ?>
