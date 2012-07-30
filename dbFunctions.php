@@ -101,7 +101,7 @@ function displayTable() {
 	echo '<label><input type="radio" name="function"> Update </label>';
 	echo '<label><input type="radio" name="function"> Delete </label>';
 	echo '</p>';
-	echo '<p><input type="submit" value="Send" onClick="return whichFunction()"></p>';
+	echo '<p><input type="reset" value="Reset"><input type="submit" value="Send" onClick="return whichFunction()"></p>';
 	echo '</form>';
 }
 ?>
