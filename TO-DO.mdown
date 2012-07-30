@@ -1,3 +1,5 @@
 * modularize certain functions so that each page has only a couple lines of code?
 * add comments for increased readability
 * add functionality that allows the user to access all of the program's functions from the table viewer
+* replace radio buttons on table with checkboxes
+* replace location text field with drop-down
