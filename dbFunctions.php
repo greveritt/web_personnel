@@ -66,7 +66,7 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="'.$fname.'">');
 	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="'.$lname.'">');
 	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="'.$phone.'">');
-	printf($cellTemplate, '<input type="text" name="location" tabindex="40" value="'.$location.'">'); // this will be made a dropdown later
+	printf($cellTemplate, '<select name="location" tabindex="40"><option value="null">Please choose one:</option><option value="New Jersey">New Jersey</option><option value="New York">New York</option><option value="California">California</option></select>'); // this is a dropdown for locations, but it doesn't display the location already picked in the database - yet
 	echo '</tr>';
 } 
 
