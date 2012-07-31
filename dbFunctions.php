@@ -79,6 +79,7 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	else if (!isset($location)) {
 		printf($cellTemplate, 'Error: Location information not found');
 	echo '</tr>';
+}
 } 
 
 // display employees table
