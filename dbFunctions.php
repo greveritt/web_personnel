@@ -76,6 +76,8 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	else if ($location == 'California') {
 		printf($cellTemplate, '<select name="location" tabindex="40"><option value="New Jersey">New Jersey</option><option value="New York">New York</option><option value="California" selected>California</option></select>');
 }
+	else if (!isset($location)) {
+		printf($cellTemplate, 'Error: Location information not found');
 	echo '</tr>';
 } 
 
