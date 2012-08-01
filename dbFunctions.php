@@ -31,11 +31,13 @@ function getDBAccess() {
 }
 
 function echoTableHeader() {
+	echo '<table>';
 	echo '<thead>';
 	echo '<tr>';
 	echo '	<th>ID</th> <th>First name</th> <th>Last name</th> <th>Phone</th> <th>Location</th>';
 	echo '</tr>';
 	echo '</thead>';
+	echo '</table>';
 }
 
 // The following function is deprecated
@@ -58,6 +60,8 @@ function displayRowContents($id, $fname, $lname, $phone, $location) {
 // displays an employee record
 function displayRow($id, $fname, $lname, $phone, $location) {
 	$cellTemplate = '<td>%s</td> ';
+	echo '<table>';
+	echo '<tbody>';
 	echo '<tr>';
 	// print a cell containing the ID number along with a radio button that submits the ID number
 	printf($cellTemplate, '<label><input type="radio" name="id" value="'.$id.'">'.$id.'</label>');
@@ -79,11 +83,13 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	else if (($location != 'New Jersey') && ($location != 'New York') && ($location != 'California')) {
 		printf($cellTemplate, 'Error: Location information not found');
 	echo '</tr>';
+	echo '</tbody>';
+	echo '</table>';
 }
 } 
 
 // display employees table
-function displayTable() {
+function displayTables() {
 	$db = getDBAccess();
 	$selectQueryText = "SELECT * FROM employees;";
 	$selectQuery = $db->prepare($selectQueryText);
@@ -94,12 +100,10 @@ function displayTable() {
 	echo '<table>';
 	echo '<caption>Results</caption>';
 	echoTableHeader();
-	echo '<tbody>';
+	echo '</table>';
 	while($selectQuery->fetch()) {
 		displayRow($id, $fname, $lname, $phone, $location);
 	}
-	echo '</tbody>';
-	echo '</table>';
 	echo '<p>';
 	echo '<label><input type="radio" name="function"> Update </label>';
 	echo '<label><input type="radio" name="function"> Delete </label>';
