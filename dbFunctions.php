@@ -99,8 +99,8 @@ function displayTables() {
 	echo '<form name="editTable" action="addAndConfirm.php" method="post">';
 	echo '<table>';
 	echo '<caption>Results</caption>';
-	echoTableHeader();
 	echo '</table>';
+	echoTableHeader();
 	while($selectQuery->fetch()) {
 		displayRow($id, $fname, $lname, $phone, $location);
 	}
