@@ -3,7 +3,11 @@ web_personnel v0.5
 
 A system for maintaining an employee database from a web browser.
 
-To get this system working, you must edit the connect() function so that it contains the connection details for your MySQL server. A proper configuration system is forthcoming.
+To get this system working, you must create a file named dbInfo.inc.php within the root folder for this program and embed the following information within <?php ?> tags, with each field on a separate line:
+* hostname
+* user
+* password
+* database name
 
 Requires PHP, MySQL, and a compatible webserver like Apache.
 
