@@ -65,10 +65,10 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 }
 	else if (($location != 'New Jersey') && ($location != 'New York') && ($location != 'California')) {
 		printf($cellTemplate, 'Error: Location information not found');
+}
 	echo '</tr>';
 	echo '</tbody>';
 	echo '</table>';
-}
 } 
 
 // display employees table
