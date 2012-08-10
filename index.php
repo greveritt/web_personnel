@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 
 <head>
 <title>Manage database</title>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
-<link rel="stylesheet" href="table.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+<link rel="stylesheet" href="table.css" type="text/css" />
 </head>
 
 <body>
