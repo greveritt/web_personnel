@@ -40,23 +40,6 @@ function echoTableHeader() {
 	echo '</table>';
 }
 
-// The following function is deprecated
-/*
-function displayRowContents($id, $fname, $lname, $phone, $location) {
-	echo '<br>';
-	printf("ID: %s", $id);
-    echo '<br>';
-	printf("First name: %s", $fname);
-    echo '<br>';
-	printf("Last name: %s", $lname);
-    echo '<br>';
-	printf("Phone #: %s", $phone);
-    echo '<br>';
-	printf("Location: %s", $location);
-    echo '<br>';
-}
-*/
-
 // displays an employee record
 function displayRow($id, $fname, $lname, $phone, $location) {
 	$cellTemplate = '<td>%s</td> ';
@@ -64,12 +47,12 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	echo '<tbody>';
 	echo '<tr>';
 	// print a cell containing the ID number along with a radio button that submits the ID number
-	printf($cellTemplate, '<label><input type="radio" name="id" value="'.$id.'">'.$id.'</label>');
+	printf($cellTemplate, '<label><input type="radio" name="id" value="'.$id.'" />'.$id.'</label>');
 	//printf($cellTemplate, $id);
 	// print cells of the other data from the row, as text fields
-	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="'.$fname.'">');
-	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="'.$lname.'">');
-	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="'.$phone.'">');
+	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="'.$fname.'" />');
+	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="'.$lname.'" />');
+	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="'.$phone.'" />');
 	// determines what location is in the db row, then makes that the selected value for location drop-down
 	if ($location == 'New Jersey') {
 		printf($cellTemplate, '<select name="location" tabindex="40"><option value="New Jersey" selected>New Jersey</option><option value="New York">New York</option><option value="California">California</option></select>');
