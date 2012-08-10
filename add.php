@@ -11,7 +11,7 @@
 <?php
 include 'header.php';
 ?>
-<form action="addAndConfirm.php" method="post" />
+<form action="addAndConfirm.php" method="post">
 
 <p>
 Enter the employee ID: <input type="text" name="id" size="30" /> <br />

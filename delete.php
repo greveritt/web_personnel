@@ -11,7 +11,7 @@
 <?php
 include 'header.php';
 ?>
-<form action="deleteAndConfirm.php" method="post" />
+<form action="deleteAndConfirm.php" method="post">
 
 <p>
 Enter the ID of the record you want to delete: <input type="text" name="id" size="30" /> 

@@ -11,7 +11,7 @@
 <?php
 include 'header.php';
 ?>
-<form action="updateAndConfirm.php" method="post" />
+<form action="updateAndConfirm.php" method="post">
 
 <p>
 Enter the ID of the record you want to update: <input type="text" name="id" size="30" /> <br />
