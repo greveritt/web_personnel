@@ -6,7 +6,7 @@ function connect() {
     return $db;
 }
 
-# ensures that proper database and table has been initialized
+// ensures that proper database and table has been initialized
 function ensureTableInit($db) {
 	// check that DB and table exist, creates if they don't
 	$initFile = 'init.sql';
