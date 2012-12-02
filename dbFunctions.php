@@ -60,13 +60,13 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	$cellTemplate = '<td>%s</td> ';
 	echo '<tr>';
 	// print a cell containing the ID number along with a radio button that submits the ID number
-	printf($cellTemplate, '<label><input type="radio" name="id" value="'.$id.'">'.$id.'</label>');
+	printf($cellTemplate, '<input type="radio" name="id">'.$id);
 	//printf($cellTemplate, $id);
 	// print cells of the other data from the row, as text fields
-	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="'.$fname.'">');
-	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="'.$lname.'">');
-	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="'.$phone.'">');
-	printf($cellTemplate, '<input type="text" name="location" tabindex="40" value="'.$location.'">'); // this will be made a dropdown later
+	printf($cellTemplate, $fname);
+	printf($cellTemplate, $lname);
+	printf($cellTemplate, $phone);
+	printf($cellTemplate, $location); 
 	echo '</tr>';
 } 
 
@@ -91,8 +91,26 @@ function displayTable() {
 	echo '<p>';
 	echo '<label><input type="radio" name="function"> Update </label>';
 	echo '<label><input type="radio" name="function"> Delete </label>';
+	echo '<table>';
+	echo '<caption>Data for update</caption>';
+	echoTableHeader();
+	inputRow();
 	echo '</p>';
 	echo '<p><input type="submit" value="Send" onClick="return whichFunction()"></p>';
 	echo '</form>';
+}
+
+function inputRow() {
+	$cellTemplate = '<td>%s</td> ';
+	echo '<tr>';
+	// print a cell containing the ID number along with a radio button that submits the ID number
+	printf($cellTemplate, '<input type="text" name="id" size="30" tabindex="5" value="Insert ID number here">');
+	//printf($cellTemplate, $id);
+	// print cells of the other data from the row, as text fields
+	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="Insert first name here">');
+	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="Insert last name here">');
+	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="Insert phone number here">');
+	printf($cellTemplate, '<input type="text" name="location" tabindex="40" value="'.$location.'">'); // this will be made a dropdown later
+	echo '</tr>';
 }
 ?>
