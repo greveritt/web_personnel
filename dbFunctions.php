@@ -73,7 +73,7 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 // display employees table
 function displayTable() {
 	$db = getDBAccess();
-	$selectQueryText = "SELECT * FROM employees;";
+	$selectQueryText = "SELECT * FROM employees ORDER BY id;";
 	$selectQuery = $db->prepare($selectQueryText);
 	$selectQuery->execute();
 	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
