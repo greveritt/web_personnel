@@ -77,7 +77,7 @@ function displayTable() {
 	$selectQuery = $db->prepare($selectQueryText);
 	$selectQuery->execute();
 	$selectQuery->bind_result($id, $fname, $lname, $phone, $location);
-	echo "<script type='text/javascript' src='radioFunction.js'></script>";
+	echo '<script type='text/javascript' src='radioFunction.js'></script>';
 	echo '<form name="editTable" action="addAndConfirm.php" method="post">';
 	echo '<table>';
 	echo '<caption>Results</caption>';
