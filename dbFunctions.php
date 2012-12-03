@@ -105,7 +105,7 @@ function inputRow() {
 	$cellTemplate = '<td>%s</td> ';
 	echo '<tr>';
 	// print a cell containing the ID number along with a radio button that submits the ID number
-	printf($cellTemplate, '<input type="text" name="id" size="30" tabindex="5" value="Insert ID number here">');
+	printf($cellTemplate, 'ID number');
 	//printf($cellTemplate, $id);
 	// print cells of the other data from the row, as text fields
 	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="Insert first name here">');
