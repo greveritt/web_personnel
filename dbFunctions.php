@@ -60,7 +60,7 @@ function displayRow($id, $fname, $lname, $phone, $location) {
 	$cellTemplate = '<td>%s</td> ';
 	echo '<tr>';
 	// print a cell containing the ID number along with a radio button that submits the ID number
-	printf($cellTemplate, '<input type="radio" name="id">'.$id);
+	printf($cellTemplate, '<input type="radio" name="id" value="'.$id.'>'.$id);
 	//printf($cellTemplate, $id);
 	// print cells of the other data from the row, as text fields
 	printf($cellTemplate, $fname);
