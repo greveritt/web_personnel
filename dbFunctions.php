@@ -96,7 +96,6 @@ function displayTable() {
 	echoTableHeader();
 	inputRow();
 	echo '</table>';
-	echo '</p>';
 	echo '<p><input type="submit" value="Send" onClick="return whichFunction()"></p>';
 	echo '</form>';
 }
