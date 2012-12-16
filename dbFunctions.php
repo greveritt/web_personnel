@@ -110,7 +110,11 @@ function inputRow() {
 	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="Insert first name here">');
 	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="Insert last name here">');
 	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="Insert phone number here">');
-	printf($cellTemplate, '<input type="text" name="location" tabindex="40" value="'.$location.'">'); // this will be made a dropdown later
+	printf($cellTemplate, '<select name="location" tabindex="40">
+	<option value="New York">New York</option>
+	<option value="New Jersey">New Jersey</option>
+	<option value="California">California</option>
+	</select>'); 
 	echo '</tr>';
 }
 ?>
