@@ -94,17 +94,43 @@ function displayTable() {
 	echo '<table>';
 	echo '<caption>Data for update</caption>';
 	echoTableHeader();
-	inputRow();
+	updatesRow();
 	echo '</table>';
 	echo '<p><input type="submit" value="Send" onClick="return whichFunction()"></p>';
 	echo '</form>';
+	echo '<form>';
+	echo '<table>';
+	echo '<caption>Data to add</caption>';
+	echoTableHeader();
+	additionRow();
+	echo '</table>';
+	echo '<input type="submit" value="Send" onClick="return whichFunction()">';
+	echo '</form>';
 }
 
-function inputRow() {
+function updatesRow() {
 	$cellTemplate = '<td>%s</td> ';
 	echo '<tr>';
 	// print a cell containing the ID number along with a radio button that submits the ID number
 	printf($cellTemplate, 'ID number');
+	//printf($cellTemplate, $id);
+	// print cells of the other data from the row, as text fields
+	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="Insert first name here">');
+	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="Insert last name here">');
+	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="Insert phone number here">');
+	printf($cellTemplate, '<select name="location" tabindex="40">
+	<option value="New York">New York</option>
+	<option value="New Jersey">New Jersey</option>
+	<option value="California">California</option>
+	</select>'); 
+	echo '</tr>';
+}
+
+function additionRow() {
+	$cellTemplate = '<td>%s</td> ';
+	echo '<tr>';
+	// print a cell containing the ID number along with a radio button that submits the ID number
+	printf($cellTemplate, '<input type="hidden" name="id" value="null">ID number');
 	//printf($cellTemplate, $id);
 	// print cells of the other data from the row, as text fields
 	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="Insert first name here">');
