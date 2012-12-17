@@ -104,7 +104,7 @@ function displayTable() {
 	echoTableHeader();
 	additionRow();
 	echo '</table>';
-	echo '<input type="submit" value="Send" onClick="return whichFunction()">';
+	echo '<input type="submit" value="Send" onClick="add.php">';
 	echo '</form>';
 }
 
