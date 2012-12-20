@@ -115,9 +115,9 @@ function updatesRow() {
 	printf($cellTemplate, 'ID number');
 	//printf($cellTemplate, $id);
 	// print cells of the other data from the row, as text fields
-	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="Insert first name here">');
-	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="Insert last name here">');
-	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="Insert phone number here">');
+	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="fname" size="30" tabindex="10" value="Insert first name here">');
+	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="lname" size="30" tabindex="20" value="Insert last name here">');
+	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="phone" size="10" tabindex="30" value="Insert phone number here">');
 	printf($cellTemplate, '<select name="location" tabindex="40">
 	<option value="New York">New York</option>
 	<option value="New Jersey">New Jersey</option>
@@ -133,9 +133,9 @@ function additionRow() {
 	printf($cellTemplate, '<input type="hidden" name="id" value="null">ID number');
 	//printf($cellTemplate, $id);
 	// print cells of the other data from the row, as text fields
-	printf($cellTemplate, '<input type="text" name="fname" size="30" tabindex="10" value="Insert first name here">');
-	printf($cellTemplate, '<input type="text" name="lname" size="30" tabindex="20" value="Insert last name here">');
-	printf($cellTemplate, '<input type="text" name="phone" size="10" tabindex="30" value="Insert phone number here">');
+	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="fname" size="30" tabindex="10" value="Insert first name here">');
+	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="lname" size="30" tabindex="20" value="Insert last name here">');
+	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="phone" size="10" tabindex="30" value="Insert phone number here">');
 	printf($cellTemplate, '<select name="location" tabindex="40">
 	<option value="New York">New York</option>
 	<option value="New Jersey">New Jersey</option>
