@@ -119,6 +119,7 @@ function updatesRow() {
 	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="lname" size="30" tabindex="20" value="Insert last name here">');
 	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="phone" size="10" tabindex="30" value="Insert phone number here">');
 	printf($cellTemplate, '<select name="location" tabindex="40">
+	<option value="null">Please select a state</option>
 	<option value="New York">New York</option>
 	<option value="New Jersey">New Jersey</option>
 	<option value="California">California</option>
@@ -137,6 +138,7 @@ function additionRow() {
 	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="lname" size="30" tabindex="20" value="Insert last name here">');
 	printf($cellTemplate, '<input type="text" onfocus="this.value=\'\'" name="phone" size="10" tabindex="30" value="Insert phone number here">');
 	printf($cellTemplate, '<select name="location" tabindex="40">
+	<option value="null">Please select a state</option>
 	<option value="New York">New York</option>
 	<option value="New Jersey">New Jersey</option>
 	<option value="California">California</option>
