@@ -38,23 +38,6 @@ function echoTableHeader() {
 	echo '</thead>';
 }
 
-// The following function is deprecated
-/*
-function displayRowContents($id, $fname, $lname, $phone, $location) {
-	echo '<br>';
-	printf("ID: %s", $id);
-    echo '<br>';
-	printf("First name: %s", $fname);
-    echo '<br>';
-	printf("Last name: %s", $lname);
-    echo '<br>';
-	printf("Phone #: %s", $phone);
-    echo '<br>';
-	printf("Location: %s", $location);
-    echo '<br>';
-}
-*/
-
 // displays an employee record
 function displayRow($id, $fname, $lname, $phone, $location) {
 	$cellTemplate = '<td>%s</td> ';
