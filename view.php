@@ -10,7 +10,7 @@
 include 'header.php';
 require 'dbFunctions.php';
 
-displayTables();
+displayTable();
 
 include 'goBack.php';
 include 'footer.php';
