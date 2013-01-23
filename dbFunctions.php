@@ -33,7 +33,7 @@ function getDBAccess() {
 function echoTableHeader() {
 	echo '<thead>';
 	echo '<tr>';
-	echo '	<th>ID</th> <th>First name</th> <th>Last name</th> <th>Phone</th> <th>Location</th> <th></th> <th></th>';
+	echo '	<th>ID</th> <th>First name</th> <th>Last name</th> <th>Phone</th> <th>Location</th>';
 	echo '</tr>';
 	echo '</thead>';
 }
